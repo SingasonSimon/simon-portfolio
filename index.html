@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simon Njoroge</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo_nav">
+            <a href="#"><img src="./assets/logo.jpg" alt="Logo" class="logo"></a>
+            <ul class="nav_ul">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="about-text">
+            <h2>Hi, I'm Simon Njoroge</h2>
+            <p>A passionate web developer with a strong foundation in HTML, CSS, and JavaScript. I love building responsive and user-friendly websites.</p>
+        </div>
+        <img src="./assets/profile.jpg" alt="Profile Picture" class="profile-img">
+    </section>
+    <!-- Projects section -->
+    <section id="projects" class="projects">
+        <h2>Simon's Projects</h2>
+        <div class="project-container">
+            <div class="project">
+                <img src="assets/project1.jpg" alt="Project 1">
+                <h3>WEB DEVELOPER BLOG</h3>
+                <p>Minimalist web developer portfolio.</p>
+                <a href="https://simon-njoroge-blog.vercel.app/" target="_blank">View Project</a>
+            </div>
+            <div class="project">
+                <img src="assets/project2.jpg" alt="Project 2">
+                <h3>EMURUA DIKIRR LEAGUE</h3>
+                <p>Emurua Football Club, nestled in the heart of the picturesque town of Emurua, is a beacon of local passion for the beautiful game.</p>
+                <a href="https://football-league-hazel.vercel.app/" target="_blank">View Project</a>
+            </div>
+        </div>
+    </section>
+    <!-- skills -->
+    <section id="skills" class="skills">
+        <h2>My Skills</h2>
+        <div class="skills-container">
+            <div class="skill">
+                <img src="assets/html.png" alt="HTML">
+                <p>HTML</p>
+            </div>
+            <div class="skill">
+                <img src="assets/css.png" alt="CSS">
+                <p>CSS</p>
+            </div>
+            <div class="skill">
+                <img src="assets/js.png" alt="JavaScript">
+                <p>JavaScript</p>
+            </div>
+            <div class="skill">
+                <img src="assets/react.png" alt="React">
+                <p>React</p>
+            </div>
+            <div class="skill">
+                <img src="assets/git.png" alt="Git">
+                <p>Git</p>
+            </div>
+            <div class="skill">
+                <img src="assets/github.png" alt="Github">
+                <p>Github</p>
+            </div>
+        </div>
+    </section>
+    <!-- form -->
+    <section id="contact" class="contact">
+        <h2>Contact Me</h2>
+        <form action="https://formspree.io/f/xzzdgrqv" method="POST">
+            <div class="form-group">
+                <input type="text" name="name" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+                <input type="email" name="email" placeholder="Your Email" required>
+            </div>
+            <div class="form-group">
+                <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+            </div>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+    <!-- footer -->
+    <footer class="footer">
+        <h3>Connect with Me</h3>
+        <div class="social-links">
+            <a href="https://github.com/SingasonSimon" target="_blank">
+                <img src="assets/ghub.png" alt="GitHub">
+            </a>
+            <a href="https://twitter.com/seerons7" target="_blank">
+                <img src="assets/X (2).png" alt="Twitter">
+            </a>
+            <a href="https://linkedin.com/in/SimonNjoroge" target="_blank">
+                <img src="assets/linkedin.png" alt="LinkedIn">
+            </a>
+        </div>
+        <p>&copy; 2025 Simon Njoroge. All Rights Reserved.</p>
+    </footer>
+    
+    <script>
+        var form = document.getElementById("my-form");
+        
+        async function handleSubmit(event) {
+          event.preventDefault();
+          var status = document.getElementById("my-form-status");
+          var data = new FormData(event.target);
+          fetch(event.target.action, {
+            method: form.method,
+            body: data,
+            headers: {
+                'Accept': 'application/json'
+            }
+          }).then(response => {
+            if (response.ok) {
+              status.innerHTML = "Thanks for your submission!";
+              form.reset()
+            } else {
+              response.json().then(data => {
+                if (Object.hasOwn(data, 'errors')) {
+                  status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
+                } else {
+                  status.innerHTML = "Oops! There was a problem submitting your form"
+                }
+              })
+            }
+          }).catch(error => {
+            status.innerHTML = "Oops! There was a problem submitting your form"
+          });
+        }
+        form.addEventListener("submit", handleSubmit)
+      </script>
+</body>
+</html>
